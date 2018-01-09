@@ -1,0 +1,56 @@
+@keyframes loaderAnim {
+	0% {
+		left: -100%;
+	}
+	49% {
+		left: 100%;
+	}
+	50% {
+		left: 100%;
+	}
+	100% {
+		left: -100%;
+	}
+}
+
+.overlay {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(255, 255, 255, 0.7);
+
+	&.small-preloader {
+		width: 300px;
+		height: auto;
+		position: static;
+
+		.preloader {
+			width: 100px;
+		}
+	}
+}
+
+.preloader {
+	width: 200px;
+	position: relative;
+	overflow: hidden;
+}
+
+.preloader,
+.preloader-bar {
+	height: 5px;
+	border-radius: 2px;
+}
+
+.preloader-bar {
+	position: absolute;
+	width: 100%;
+	height: 5px;
+	background: #0E76E4;
+	animation: loaderAnim 2s linear infinite;
+}

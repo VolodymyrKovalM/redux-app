@@ -1,0 +1,16 @@
+.header {
+	display: flex;
+	justify-content: center;
+	padding: 15px;
+	background: #212123;
+}
+
+.menu-link {
+	color: #FFF;
+	margin-right: 15px;
+	text-transform: uppercase;
+
+	&.menu-link-active {
+		color: #F00;
+	}
+}
