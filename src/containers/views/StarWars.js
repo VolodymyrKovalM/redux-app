@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import StarWars from '../../components/StarWars';
 import { fetchData, fetchFromMultipleUrls } from '../../api';
 import {
+	startFetching,
 	receivedPagesData,
 	startFetchingFilms,
 	receivedFilms,
@@ -18,7 +19,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
 	getInitialData(url) {
-		return fetchData(url)(dispatch)
+		return fetchData(url)(dispatch, startFetching)
 			.then(data => {
 				dispatch(receivedPagesData(data));
 			});
@@ -31,7 +32,7 @@ const mapDispatchToProps = dispatch => ({
 	},
 	onPrevButtonClick(data) {
 		if (data.currentIndex === 0 && data.pagesData.previous) {
-			fetchData(data.pagesData.previous)(dispatch)
+			fetchData(data.pagesData.previous)(dispatch, startFetching)
 				.then(received => {
 					dispatch(receivedPagesData(received, 'PREV'));
 				});
@@ -48,7 +49,7 @@ const mapDispatchToProps = dispatch => ({
 	},
 	onNextButtonClick(data) {
 		if (data.currentIndex === data.herosInCurrentPage.length - 1) {
-			fetchData(data.pagesData.next)(dispatch)
+			fetchData(data.pagesData.next)(dispatch, startFetching)
 				.then(received => {
 					dispatch(receivedPagesData(received, 'NEXT'));
 				});

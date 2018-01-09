@@ -1,9 +1,7 @@
-import { startFetching } from '../actions/asyncActions';
-
 /* eslint-disable import/prefer-default-export */
 
-export const fetchData = url => dispatch => {
-	dispatch(startFetching());
+export const fetchData = url => (dispatch, action) => {
+	dispatch(action());
 	return fetch(url).then(res => res.json());
 };
 

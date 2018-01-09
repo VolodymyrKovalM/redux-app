@@ -9,7 +9,7 @@ import images from './store/imagesStore';
 
 import './styles.scss';
 
-const initialState = { swData: null, avatars: images, isLoading: true };
+const initialState = { swData: { pagesData: null, isLoading: true }, avatars: images };
 
 const history = createHistory();
 const store = configureStore(initialState);

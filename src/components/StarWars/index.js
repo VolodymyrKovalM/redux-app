@@ -8,7 +8,7 @@ import './styles.scss';
 /* eslint-disable */
 class StarWars extends Component {
 	static propTypes = {
-		isLoading: PropTypes.bool.isRequired,
+		getInitialData: PropTypes.func.isRequired,
 	}
 
 	constructor(props) {
@@ -19,7 +19,7 @@ class StarWars extends Component {
 		const { swData, getInitialData, avatars } = this.props;
 		console.log(this.props);
 
-		if (!swData) {
+		if (!swData.pagesData) {
 			getInitialData('https://swapi.co/api/people/')
 				.then(() => {
 					this.getFilmsData();
@@ -35,9 +35,9 @@ class StarWars extends Component {
 	}
 
 	render() {
-		const { isLoading, swData, avatars, onPrevButtonClick, onNextButtonClick } = this.props;
+		const { swData, avatars, onPrevButtonClick, onNextButtonClick } = this.props;
 
-		if (isLoading) {
+		if (swData.isLoading) {
 			return <Preloader className="overlay" />;
 		}
 
