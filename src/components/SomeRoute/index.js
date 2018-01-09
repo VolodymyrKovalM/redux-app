@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
 const SomeRoute = () => (
-	<div>Some Route</div>
+	<div>
+		<div>Some Route</div>
+	</div>
 );
 
 export default SomeRoute;

@@ -52,6 +52,31 @@ module.exports = {
 					},
 				],
 			},
+			{
+				test: /\.svg$/i,
+				include: SRC_DIR,
+				use: [
+					{
+						loader: 'file-loader',
+						options: {
+							name: '[name].[ext]?[hash:5]',
+							outputPath: 'img/',
+						},
+					},
+					{
+						loader: 'img-loader',
+						options: {
+							svgo: {
+								plugins: [
+									{ removeTitle: true },
+									{ cleanupIDs: false },
+									{ convertPathData: false },
+								],
+							},
+						},
+					},
+				],
+			},
 		],
 	},
 	resolve: {
