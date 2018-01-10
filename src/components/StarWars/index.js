@@ -20,18 +20,8 @@ class StarWars extends Component {
 		console.log(this.props);
 
 		if (!swData.pagesData) {
-			getInitialData('https://swapi.co/api/people/')
-				.then(() => {
-					this.getFilmsData();
-				});
+			getInitialData('https://swapi.co/api/people/');
 		}
-	}
-
-	getFilmsData() {
-		const { swData, fetchFilmsData } = this.props;
-		const filmsUrls = swData.herosInCurrentPage[swData.currentIndex].films;
-
-		fetchFilmsData(filmsUrls);
 	}
 
 	render() {
@@ -52,13 +42,13 @@ class StarWars extends Component {
 						<img className="hero-avatar" src={avatars[index]} alt="Avatar" />
 						<div className="control-buttons">
 							<button
-								onClick={() => { onPrevButtonClick(swData); }}
+								onClick={() => { onPrevButtonClick(); }}
 								disabled={index === 0 && !swData.pagesData.previous}
 							>
 								Prev
 							</button>
 							<button
-								onClick={() => { onNextButtonClick(swData); }}
+								onClick={() => { onNextButtonClick(); }}
 								disabled={index === swData.herosInCurrentPage.length - 1 && !swData.pagesData.next}
 							>
 								Next

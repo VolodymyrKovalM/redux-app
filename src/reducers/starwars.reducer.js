@@ -1,20 +1,20 @@
-import * as asyncTypes from '../actions/asyncActions';
+import * as starWarsTypes from '../actions/ActionTypes';
 
-const initialState = { pagesData: null, isLoading: true };
+const initialState = { pagesData: null, isLoading: false };
 
 const starwarsReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case asyncTypes.START_FETCHING:
+		case starWarsTypes.START_FETCHING:
 			return {
 				...state,
 				isLoading: true,
 			};
-		case asyncTypes.START_FETCHING_FILMS:
+		case starWarsTypes.START_FETCHING_FILMS:
 			return {
 				...state,
 				IsFilmsDataReady: false,
 			};
-		case asyncTypes.RECEIVED_PAGES_DATA: {
+		case starWarsTypes.RECEIVED_PAGES_DATA: {
 			let index = 0;
 			if (action.changePage === 'PREV') {
 				index = action.payload.results.length - 1;
@@ -30,18 +30,18 @@ const starwarsReducer = (state = initialState, action) => {
 				isLoading: false,
 			};
 		}
-		case asyncTypes.RECEIVED_FILMS:
+		case starWarsTypes.RECEIVED_FILMS:
 			return {
 				...state,
 				films: action.payload,
 				IsFilmsDataReady: true,
 			};
-		case asyncTypes.SHOW_PREV_HERO:
+		case starWarsTypes.SHOW_PREV_HERO_IN_CURRENT_PAGE:
 			return {
 				...state,
 				currentIndex: state.currentIndex - 1,
 			};
-		case asyncTypes.SHOW_NEXT_HERO:
+		case starWarsTypes.SHOW_NEXT_HERO_IN_CURRENT_PAGE:
 			return {
 				...state,
 				currentIndex: state.currentIndex + 1,
