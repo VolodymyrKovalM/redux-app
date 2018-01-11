@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import StarWars from '../../components/StarWars';
 // import { fetchData, fetchFromMultipleUrls } from '../../api';
 import {
+	startFetching,
 	fetchHeros,
-	fetchPrevPage,
-	fetchNextPage,
+	showPrevHero,
+	showNextHero,
 } from '../../actions/StarWarsActions';
 
 const mapStateToProps = state => ({
@@ -15,13 +16,13 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
 	getInitialData(url) {
-		dispatch(fetchHeros(url));
+		dispatch(startFetching(url));
 	},
 	onPrevButtonClick() {
-		dispatch(fetchPrevPage());
+		dispatch(showPrevHero());
 	},
 	onNextButtonClick() {
-		dispatch(fetchNextPage());
+		dispatch(showNextHero());
 	},
 });
 

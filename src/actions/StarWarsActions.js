@@ -5,10 +5,14 @@ import {
 	RECEIVED_FILMS,
 	SHOW_PREV_HERO_IN_CURRENT_PAGE,
 	SHOW_NEXT_HERO_IN_CURRENT_PAGE,
+	SHOW_PREV_HERO,
+	SHOW_NEXT_HERO
 } from './ActionTypes';
 
-export const startFetching = () => ({
+export const startFetching = (url, changePage = false) => ({
 	type: START_FETCHING,
+	url,
+	changePage,
 });
 
 export const startFetchingFilms = () => ({
@@ -26,31 +30,6 @@ export const receivedFilms = data => ({
 	payload: data,
 });
 
-export const fetchFilms = () => (dispatch, getState) => {
-	dispatch(startFetchingFilms());
-
-	const { swData } = getState();
-	const filmsUrls = swData.herosInCurrentPage[swData.currentIndex].films;
-	const promises = filmsUrls.map(url => fetch(url));
-
-	return Promise.all(promises)
-		.then(responses => Promise.all(responses.map(response => response.json())))
-		.then(data => {
-			dispatch(receivedFilms(data));
-		});
-};
-
-export const fetchHeros = url => dispatch => {
-	dispatch(startFetching());
-	return fetch(url)
-		.then(res => res.json())
-		.then(data => {
-			dispatch(receivedPagesData(data));
-
-			dispatch(fetchFilms());
-		});
-};
-
 export const showPrevHeroInCurrentPage = () => ({
 	type: SHOW_PREV_HERO_IN_CURRENT_PAGE,
 });
@@ -59,26 +38,10 @@ export const showNextHeroInCurrentPage = () => ({
 	type: SHOW_NEXT_HERO_IN_CURRENT_PAGE,
 });
 
-export const fetchNextPage = () => (dispatch, getState) => {
-	const { swData } = getState();
+export const showPrevHero = () => ({
+	type: SHOW_PREV_HERO,
+});
 
-	if (swData.currentIndex === swData.herosInCurrentPage.length - 1) {
-		dispatch(fetchHeros(swData.pagesData.next));
-	} else {
-		dispatch(showNextHeroInCurrentPage());
-	}
-
-	dispatch(fetchFilms());
-};
-
-export const fetchPrevPage = () => (dispatch, getState) => {
-	const { swData } = getState();
-
-	if (swData.currentIndex === 0 && swData.pagesData.previous) {
-		dispatch(fetchHeros(swData.pagesData.next));
-	} else {
-		dispatch(showPrevHeroInCurrentPage());
-	}
-
-	dispatch(fetchFilms());
-};
+export const showNextHero = () => ({
+	type: SHOW_NEXT_HERO,
+});

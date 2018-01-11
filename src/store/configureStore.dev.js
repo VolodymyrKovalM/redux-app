@@ -3,12 +3,15 @@
 import { createStore, applyMiddleware } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import thunk from 'redux-thunk';
+// import thunk from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
 import createBrowserHistory from 'history/createBrowserHistory';
 import rootReducer from '../reducers';
+import rootSaga from '../sagas';
 
 const history = createBrowserHistory();
-const middleware = [routerMiddleware(history), thunk];
+const sagaMiddleware = createSagaMiddleware();
+const middleware = [routerMiddleware(history), sagaMiddleware];
 
 export default function (initialState = {}) {
 	const store = createStore(
@@ -23,6 +26,8 @@ export default function (initialState = {}) {
 			store.replaceReducer(nextRootReducer);
 		});
 	}
+
+	sagaMiddleware.run(rootSaga);
 
 	return store;
 }
