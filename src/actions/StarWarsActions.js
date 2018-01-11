@@ -26,6 +26,14 @@ export const receivedFilms = data => ({
 	payload: data,
 });
 
+export const showPrevHeroInCurrentPage = () => ({
+	type: SHOW_PREV_HERO_IN_CURRENT_PAGE,
+});
+
+export const showNextHeroInCurrentPage = () => ({
+	type: SHOW_NEXT_HERO_IN_CURRENT_PAGE,
+});
+
 export const fetchFilms = () => (dispatch, getState) => {
 	dispatch(startFetchingFilms());
 
@@ -40,30 +48,22 @@ export const fetchFilms = () => (dispatch, getState) => {
 		});
 };
 
-export const fetchHeros = url => dispatch => {
+export const fetchHeros = (url, pageNeedsToBeChanged = false) => dispatch => {
 	dispatch(startFetching());
 	return fetch(url)
 		.then(res => res.json())
 		.then(data => {
-			dispatch(receivedPagesData(data));
+			dispatch(receivedPagesData(data, pageNeedsToBeChanged));
 
 			dispatch(fetchFilms());
 		});
 };
 
-export const showPrevHeroInCurrentPage = () => ({
-	type: SHOW_PREV_HERO_IN_CURRENT_PAGE,
-});
-
-export const showNextHeroInCurrentPage = () => ({
-	type: SHOW_NEXT_HERO_IN_CURRENT_PAGE,
-});
-
 export const fetchNextPage = () => (dispatch, getState) => {
 	const { swData } = getState();
 
 	if (swData.currentIndex === swData.herosInCurrentPage.length - 1) {
-		dispatch(fetchHeros(swData.pagesData.next));
+		dispatch(fetchHeros(swData.pagesData.next, 'NEXT'));
 	} else {
 		dispatch(showNextHeroInCurrentPage());
 	}
@@ -75,7 +75,7 @@ export const fetchPrevPage = () => (dispatch, getState) => {
 	const { swData } = getState();
 
 	if (swData.currentIndex === 0 && swData.pagesData.previous) {
-		dispatch(fetchHeros(swData.pagesData.next));
+		dispatch(fetchHeros(swData.pagesData.previous, 'PREV'));
 	} else {
 		dispatch(showPrevHeroInCurrentPage());
 	}
