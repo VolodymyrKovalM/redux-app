@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import fetchMock from 'fetch-mock';
 import * as swActions from '../actions/StarWarsActions';
 import * as swTypes from '../actions/ActionTypes';
 
@@ -12,7 +11,7 @@ it('should create actions', () => {
 	const url = 'https://swapi.co/api/people/';
 	const expStartFetching = {
 		type: swTypes.START_FETCHING,
-		url: url,
+		url,
 		changePage: false,
 	};
 	const expStartFetchingFilms = {
@@ -46,7 +45,7 @@ it('should dispatch an action', () => {
 
 	const actions = store.getActions();
 	const expectedPayload = [
-		{ type: swTypes.START_FETCHING, url: url, changePage: false },
+		{ type: swTypes.START_FETCHING, url, changePage: false },
 		{ type: swTypes.START_FETCHING_FILMS },
 	];
 	expect(actions).toEqual(expectedPayload);

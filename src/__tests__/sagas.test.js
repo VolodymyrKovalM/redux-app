@@ -1,10 +1,7 @@
-import sinon from 'sinon';
-import { runSaga } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
-import { fetchHeros, fetchFilms } from '../sagas/workers';
+import { fetchHeros } from '../sagas/workers';
 import * as Api from '../api';
-import * as ActionTypes from '../actions/ActionTypes';
-import { startFetching, receivedPagesData, startFetchingFilms, receivedFilms } from '../actions/StarWarsActions';
+import { startFetching, receivedPagesData, startFetchingFilms } from '../actions/StarWarsActions';
 
 describe('testing sagas', () => {
 	describe('testing fetchHeros', () => {
@@ -14,7 +11,7 @@ describe('testing sagas', () => {
 			previous: null,
 			next: null,
 			results: [],
-		}
+		};
 
 		const gen = fetchHeros(startFetching(url));
 

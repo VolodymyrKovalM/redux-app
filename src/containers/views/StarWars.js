@@ -4,7 +4,6 @@ import StarWars from '../../components/StarWars';
 // import { fetchData, fetchFromMultipleUrls } from '../../api';
 import {
 	startFetching,
-	fetchHeros,
 	showPrevHero,
 	showNextHero,
 } from '../../actions/StarWarsActions';

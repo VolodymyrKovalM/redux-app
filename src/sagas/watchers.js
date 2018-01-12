@@ -4,7 +4,7 @@ import {
 	fetchHeros,
 	fetchFilms,
 	showPrevHeroWorker,
-	showNextHeroWorker
+	showNextHeroWorker,
 } from './workers';
 
 export function* watchFetchFilms() {

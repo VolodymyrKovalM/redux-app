@@ -6,7 +6,7 @@ import {
 	SHOW_PREV_HERO_IN_CURRENT_PAGE,
 	SHOW_NEXT_HERO_IN_CURRENT_PAGE,
 	SHOW_PREV_HERO,
-	SHOW_NEXT_HERO
+	SHOW_NEXT_HERO,
 } from './ActionTypes';
 
 export const startFetching = (url, changePage = false) => ({

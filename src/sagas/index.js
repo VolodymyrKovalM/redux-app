@@ -4,7 +4,7 @@ import {
 	watchFetchFilms,
 	watchFetchHeros,
 	watchShowPrevHero,
-	watchShowNextHero
+	watchShowNextHero,
 } from './watchers';
 
 export default function* rootSaga() {
@@ -12,6 +12,6 @@ export default function* rootSaga() {
 		watchFetchHeros(),
 		watchFetchFilms(),
 		watchShowPrevHero(),
-		watchShowNextHero()
+		watchShowNextHero(),
 	]);
 }

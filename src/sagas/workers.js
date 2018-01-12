@@ -4,46 +4,44 @@ import {
 	startFetchingFilms,
 	receivedPagesData,
 	receivedFilms,
-	showPrevHero,
-	showNextHero,
 	showPrevHeroInCurrentPage,
-	showNextHeroInCurrentPage
+	showNextHeroInCurrentPage,
 } from '../actions/StarWarsActions';
 import * as Api from '../api';
 
+/* eslint-disable no-console */
 export function* fetchHeros(action) {
 	try {
 		const response = yield call(Api.fetchHeros, action.url);
 		if (action.changePage === 'PREV') {
 			yield put(receivedPagesData(response, 'PREV'));
-		} else if(action.changePage === 'NEXT') {
+		} else if (action.changePage === 'NEXT') {
 			yield put(receivedPagesData(response, 'NEXT'));
 		} else {
 			yield put(receivedPagesData(response));
 		}
 		yield put(startFetchingFilms());
-	} catch(error) {
+	} catch (error) {
 		console.log(error);
 	}
 }
 
-export function* fetchFilms(action) {
+export function* fetchFilms() {
 	const swData = yield select(state => state.swData);
 	const filmsUrls = swData.herosInCurrentPage[swData.currentIndex].films;
 
 	try {
 		const response = yield call(Api.fetchFilms, filmsUrls);
 		yield put(receivedFilms(response));
-	} catch(error) {
+	} catch (error) {
 		console.log(error);
 	}
 }
 
-export function* showPrevHeroWorker(action) {
+export function* showPrevHeroWorker() {
 	const swData = yield select(state => state.swData);
 
 	if (swData.currentIndex === 0 && swData.pagesData.previous) {
-		console.log(swData);
 		yield put(startFetching(swData.pagesData.previous, 'PREV'));
 	} else {
 		yield put(showPrevHeroInCurrentPage());
@@ -52,7 +50,7 @@ export function* showPrevHeroWorker(action) {
 	yield put(startFetchingFilms());
 }
 
-export function* showNextHeroWorker(action) {
+export function* showNextHeroWorker() {
 	const swData = yield select(state => state.swData);
 
 	if (swData.currentIndex === swData.herosInCurrentPage.length - 1) {
