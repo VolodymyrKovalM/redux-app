@@ -6,8 +6,8 @@ import {
 	receivedFilms,
 	showPrevHeroInCurrentPage,
 	showNextHeroInCurrentPage,
-} from '../actions/StarWarsActions';
-import * as Api from '../api';
+} from '../../actions/StarWarsActions';
+import * as Api from '../../api';
 
 /* eslint-disable no-console */
 export function* fetchHeros(action) {

@@ -1,16 +1,27 @@
 .header {
 	display: flex;
 	justify-content: center;
-	padding: 15px;
+	padding: 10px;
 	background: #212123;
 }
 
 .menu-link {
-	color: #FFF;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 45px;
+	height: 45px;
+	background: #3E98D8;
+	border-radius: 50%;
 	margin-right: 15px;
 	text-transform: uppercase;
 
-	&.menu-link-active {
-		color: #F00;
+	&.menu-link-active,
+	&:hover {
+		background: #FFF;
+		.git-icon,
+		.star-icon {
+			fill: rgb(0, 208, 255);
+		}
 	}
 }

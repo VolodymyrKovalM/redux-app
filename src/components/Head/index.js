@@ -1,6 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+import StarIcon from './svg/star1.svg';
+import GitIcon from './svg/github.svg';
+
 import './styles.scss';
 
 const Head = () => (
@@ -11,15 +14,15 @@ const Head = () => (
 			className="menu-link"
 			to="/starwars"
 		>
-			Star Wars
+			<StarIcon width={25} height={25} />
 		</NavLink>
 		<NavLink
 			exact
 			activeClassName="menu-link-active"
 			className="menu-link"
-			to="/another"
+			to="/github"
 		>
-			Another route
+			<GitIcon width={25} height={25} />
 		</NavLink>
 	</header>
 );

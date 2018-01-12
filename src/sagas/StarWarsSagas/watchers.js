@@ -1,5 +1,5 @@
 import { takeLatest } from 'redux-saga/effects';
-import * as ActionTypes from '../actions/ActionTypes';
+import * as ActionTypes from '../../actions/ActionTypes';
 import {
 	fetchHeros,
 	fetchFilms,

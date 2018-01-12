@@ -57,15 +57,12 @@ module.exports = {
 				include: SRC_DIR,
 				use: [
 					{
-						loader: 'file-loader',
-						options: {
-							name: '[name].[ext]?[hash:5]',
-							outputPath: 'img/',
-						},
+						loader: 'babel-loader',
 					},
 					{
-						loader: 'img-loader',
+						loader: 'react-svg-loader',
 						options: {
+							jsx: true,
 							svgo: {
 								plugins: [
 									{ removeTitle: true },

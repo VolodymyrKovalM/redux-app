@@ -13,28 +13,6 @@
 	}
 }
 
-.overlay {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	background: rgba(255, 255, 255, 0.7);
-
-	&.small-preloader {
-		width: 300px;
-		height: auto;
-		position: static;
-
-		.preloader {
-			width: 100px;
-		}
-	}
-}
-
 .preloader {
 	width: 200px;
 	position: relative;
