@@ -12,7 +12,7 @@ import * as Api from '../../api';
 /* eslint-disable no-console */
 export function* fetchHeros(action) {
 	try {
-		const response = yield call(Api.fetchHeros, action.url);
+		const response = yield call(Api.fetchSingleUrl, action.url);
 		if (action.changePage === 'PREV') {
 			yield put(receivedPagesData(response, 'PREV'));
 		} else if (action.changePage === 'NEXT') {
@@ -31,7 +31,7 @@ export function* fetchFilms() {
 	const filmsUrls = swData.herosInCurrentPage[swData.currentIndex].films;
 
 	try {
-		const response = yield call(Api.fetchFilms, filmsUrls);
+		const response = yield call(Api.fetchMultipleUrls, filmsUrls);
 		yield put(receivedFilms(response));
 	} catch (error) {
 		console.log(error);

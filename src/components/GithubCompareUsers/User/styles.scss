@@ -1,0 +1,22 @@
+.user {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.user-name {
+	width: 100%;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #212123;
+	margin-bottom: 15px;
+	font-size: 18px;
+	text-align: center;
+}
+
+.user-avatar {
+	width: 175px;
+	border-radius: 50%;
+	margin-bottom: 25px;
+	border: 3px solid #00D0FF;
+}

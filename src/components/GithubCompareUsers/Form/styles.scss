@@ -1,0 +1,23 @@
+.user-search-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+
+	input {
+		width: 275px;
+		height: 27px;
+		margin-bottom: 25px;
+		border: none;
+		text-indent: 10px;
+		border-bottom: 1px solid #212123;
+	}
+
+	input::-webkit-input-placeholder {
+		color: #CCC;
+		font-size: 16px;
+		font-style: italic;
+		font-family: Arial, sans-serif;
+	}
+}
