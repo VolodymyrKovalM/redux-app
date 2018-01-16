@@ -1,0 +1,45 @@
+.repo {
+	width: 455px;
+	min-height: 59px;
+	padding: 8px 12px;
+	margin-bottom: 5px;
+	position: relative;
+	border-top: 2px solid #EAEAEA;
+
+	&:hover {
+		border-top-color: #00D0FF;
+
+		.repo-name {
+			text-decoration: underline;
+		}
+	}
+}
+
+.repo-link {
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+}
+
+.repo-name {
+	color: #4672B3;
+	margin-bottom: 35px;
+	font-weight: bold;
+}
+
+.repo-lang {
+	color: #EF2B58;
+}
+
+.repo-stars {
+	position: absolute;
+	top: 5px;
+	right: 10px;
+
+	svg {
+		fill: #7A49A7;
+		margin-right: 5px;
+	}
+}

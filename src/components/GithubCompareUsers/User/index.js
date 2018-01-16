@@ -15,7 +15,7 @@ const User = ({ userData, user, reset }) => {
 				>
 					Reset
 				</button>
-				<Link to={`/github/repos`} className="btn">Look repos</Link>
+				<Link to={`/github/repos/${userData.login}`} className="btn">Look repos</Link>
 			</div>
 		</div>
 	);

@@ -20,10 +20,6 @@ class GitHubCompareUsers extends Component {
 		console.log(this.props);
 	}
 
-	componentDidUpdate(prevProps) {
-		console.log(prevProps);
-	}
-
 	handleInputChange(event, user) {
 		this.props.onInputChange(event.target.value, user);
 	}
@@ -51,7 +47,7 @@ class GitHubCompareUsers extends Component {
 						/>
 						: <Form
 								onErrorCancel={this.props.onCancelError}
-								error={error}
+								error={userOne.error}
 								onSubmit={this.handleFormSubmit}
 								onChange={this.handleInputChange}
 								user="userOne"
@@ -69,7 +65,7 @@ class GitHubCompareUsers extends Component {
 						/>
 						: <Form
 								onErrorCancel={this.props.onCancelError}
-								error={error}
+								error={userTwo.error}
 								onSubmit={this.handleFormSubmit}
 								onChange={this.handleInputChange}
 								user="userTwo"

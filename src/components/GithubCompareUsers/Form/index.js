@@ -11,7 +11,7 @@ const Form = ({ user, isFetching, onChange, onSubmit, error, onErrorCancel }) =>
 			onSubmit={(e) => { onSubmit(e, user); }}
 			action="#"
 		>
-			{ error && <Error onCancel={onErrorCancel} message={error.message} /> }
+			{ error && <Error onCancel={() => { onErrorCancel(user); }} message={error.message} /> }
 			{ isFetching && <GithubPreloader className="overlay github-small-preloader"/> }
 			<input
 				type="text"

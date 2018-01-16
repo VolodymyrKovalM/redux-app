@@ -7,6 +7,8 @@ import {
 	ERROR_USER_IS_THE_SAME,
 	ERROR_USER_NOT_FOUND,
 	CANCEL_ERROR,
+	REQUEST_USER_REPOS,
+	RECEIVED_USER_REPOS,
 } from './ActionTypes';
 
 export const onInputChange = (value, userNumber) => ({
@@ -45,6 +47,18 @@ export const errorUserNotFound = (userName, userNumber) => ({
 	userNumber,
 });
 
-export const cancelError = () => ({
+export const cancelError = userNumber => ({
 	type: CANCEL_ERROR,
+	userNumber,
+});
+
+export const requestUserRepos = userNumber => ({
+	type: REQUEST_USER_REPOS,
+	userNumber,
+});
+
+export const receivedUserRepos = (data, userNumber) => ({
+	type: RECEIVED_USER_REPOS,
+	payload: data,
+	userNumber,
 });

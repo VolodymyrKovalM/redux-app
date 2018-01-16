@@ -23,3 +23,13 @@ export function isUserTheSame(allUsers, userName) {
 
 	return false;
 }
+
+export function getUserDataByName(allUsers, userName) {
+	for (let user in allUsers) {
+		if (allUsers[user].data && allUsers[user].data.login === userName) {
+			return user;
+		}
+	}
+
+	return false;
+}

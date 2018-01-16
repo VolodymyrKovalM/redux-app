@@ -1,8 +1,9 @@
-.forms-container {
+.forms-container,
+.repos-page-container {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	height: calc(100vh - 65px);
+	height: calc(100vh - 200px);
 	padding: 25px;
 }
 

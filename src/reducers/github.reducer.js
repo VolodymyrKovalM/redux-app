@@ -4,16 +4,19 @@ const initialState = {
 	users: {
 		userOne: {
 			data: null,
+			repos: null,
 			name: null,
+			error: null,
 			isFetching: false,
 		},
 		userTwo: {
 			data: null,
+			repos: null,
 			name: null,
+			error: null,
 			isFetching: false,
 		},
 	},
-	error: null,
 	isLoading: false,
 };
 
@@ -68,13 +71,13 @@ const githubReducer = (state = initialState, action) => {
 		case githubTypes.ERROR_USER_IS_THE_SAME:
 			return {
 				...state,
-				error: {
-					message: `User ${action.payload} is already a participant. No need to compare two identical users`
-				},
 				users: {
 					...state.users,
 					[action.userNumber]: {
 						...state.users[action.userNumber],
+						error: {
+							message: `User ${action.payload} is already a participant. No need to compare two identical users`
+						},
 						isFetching: false,
 					},
 				},
@@ -82,22 +85,44 @@ const githubReducer = (state = initialState, action) => {
 		case githubTypes.ERROR_USER_NOT_FOUND:
 			return {
 				...state,
-				error: {
-					message: `User ${action.payload} is not found`
-				},
 				users: {
 					...state.users,
 					[action.userNumber]: {
 						...state.users[action.userNumber],
+						error: {
+							message: `User ${action.payload} is not found`
+						},
 						isFetching: false,
 					},
 				},
-
+			};
+		case githubTypes.REQUEST_USER_REPOS:
+			return {
+				...state,
+				isLoading: true,
+			};
+		case githubTypes.RECEIVED_USER_REPOS:
+			return {
+				...state,
+				isLoading: false,
+				users: {
+					...state.users,
+					[action.userNumber]: {
+						...state.users[action.userNumber],
+						repos: action.payload,
+					},
+				},
 			};
 		case githubTypes.CANCEL_ERROR:
 			return {
 				...state,
-				error: null,
+				users: {
+					...state.users,
+					[action.userNumber]: {
+						...state.users[action.userNumber],
+						error: null,
+					},
+				},
 			};
 		default:
 			return state;

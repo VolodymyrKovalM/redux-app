@@ -22,8 +22,8 @@ const mapDispatchToProps = dispatch => ({
 	onReset(user) {
 		dispatch(resetUserData(user));
 	},
-	onCancelError() {
-		dispatch(cancelError());
+	onCancelError(user) {
+		dispatch(cancelError(user));
 	},
 });
 
