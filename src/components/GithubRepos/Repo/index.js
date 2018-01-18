@@ -7,8 +7,8 @@ import './styles.scss';
 
 const propTypes = {
 	repoData: PropTypes.object.isRequired,
-}
-
+};
+/* eslint-disable */
 const Repo = ({ repoData }) => (
 	<li className="repo">
 		<a href={repoData.html_url} className="repo-link" target="_blank"></a>

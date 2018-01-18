@@ -8,19 +8,20 @@ import * as Api from '../../api';
 import BackButton from './svg/back.svg';
 
 import './styles.scss';
-
+/* eslint-disable jsx-a11y/anchor-is-valid */
 class GithubRepos extends Component {
+	static propTypes = {
+		github: PropTypes.object.isRequired,
+		getRepos: PropTypes.func.isRequired,
+		match: PropTypes.object.isRequired,
+	}
+
 	constructor(props) {
 		super(props);
 
 		this.state = {
 			userNumber: null,
 		};
-	}
-
-	static propTypes = {
-		github: PropTypes.object.isRequired,
-		getRepos: PropTypes.func.isRequired,
 	}
 
 	componentWillMount() {
